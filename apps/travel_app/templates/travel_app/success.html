@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.min.css">
+<div class="card-panel teal lighten-2"><h4 class="center-align">Welcome to Travel buddy</h4></div>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <div class="card-panel">
+      <span class="blue-text text-darken-2"><p class="center-align">Hello, {{user.0.name}} !! Want to plan a trip!! Go ahead and click on Add travel plan:)</p></span><a href="/addtravelplan/{{user.0.id}}"><span class="yellow">Add Travel Plan</a></span>
+    </div>
+    <div class="card-panel">
+      <span class="green-text text-darken-2" ><p class="center-align">Hey, {{user.0.name}} !! Have you checked your upcoming trip schedules</p></span>
+    </div>
+
+    <table class= "centered","striped">
+      <thead>
+        <tr>
+          <th>Destination</th>
+          <th>Travel Start Date</th>
+          <th>Travel End date</th>
+          <th>Plan</th>
+        </tr>
+      </thead>
+      <tbody>
+        {%for trip in join%}
+        <tr>
+          <td><a href="/viewtrip/{{trip.trip.id}}">{{trip.trip.destination}}</a></td>
+          <td>{{trip.trip.datefrom}}</td>
+          <td>{{trip.trip.dateto}}</td>
+          <td>{{trip.trip.description}}</td>
+
+        </tr>
+        {%endfor%}
+      </tbody>
+    </table>
+    <div class="card-panel">
+      <span class="orange-text text-darken-2 " ><p class="center-align">Hey, {{user.0.name}} !! Want to check on where otheres are planning!!!</p></span>
+    </div>
+
+    <table class = "centered">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Destination</th>
+          <th>Travel Start Date</th>
+          <th>Travel End date</th>
+          <th>Do you want to join</th>
+        </tr>
+      </thead>
+      <tbody>
+
+
+          {%for trip in trip_other%}
+
+
+                <tr>
+
+                  <td>{{trip.owner.name}}</td>
+          <td><a href="/viewtrip/{{trip.id}}">{{trip.destination}}</a></td>
+
+          <td>{{trip.datefrom}}</td>
+          <td>{{trip.dateto}}</td>
+          <td><a href="/join/{{trip.id}}/{{user.0.id}}">Join</a></td>
+        </tr>
+
+
+        {%endfor%}
+      </tbody>
+    </table>
+    <div class="card-panel">
+      <span class="green-text text-darken-2" ><p class="center-align"> <br>
+      <a href="/logout">Logout</a></p></span>
+    </div>
+
+
+  </body>
+</html>

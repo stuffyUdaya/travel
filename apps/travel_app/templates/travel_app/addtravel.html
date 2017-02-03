@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.min.css">
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <div class="card-panel">
+      <span class="green-text text-darken-2" ><p class="center-align"><a href="/success">Home</a> <br>
+      <a href="/logout">Logout</a></p></span>
+    </div>
+    <div class="card-panel">
+      <span class="green-text text-darken-2" ><p class="center-align">Hey {{user.name}}!!! Add a trip  !! </p></span>
+    </div>
+
+    <form action="/addtrip/{{user.id}}" method="post">
+    {%csrf_token%}
+    <div class="row">
+    <div class="input-field col s3">
+    <p>Destination: <input type="text" name="destination" required ></p></div></div>
+    <div class="row">
+    <div class="input-field col s3">
+    <p>Description:<input type="text" name="description" required ></p></div></div>
+    <div class="row">
+    <div class="input-field col s3">
+    <p>Travel Date From: <input type="date" name="datefrom" required></p></div></div>
+    <div class="row">
+    <div class="input-field col s3">
+    <p>Travel Date to: <input type="date" name="dateto" required></p></div></div>
+
+    <div class="row">
+    <div class="input-field col s3">
+      <button class="waves-effect waves-light btn-large" type="submit" name="action">Add this trip
+      <i class="material-icons right"></i>
+    </button>
+    </div></div>
+
+
+    </form>
+  </body>
+</html>

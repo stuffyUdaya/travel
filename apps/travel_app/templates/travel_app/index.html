@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.min.css">
+<div class="card-panel #64b5f6 blue lighten-2"><h4 class="center-align">Welcome to Travel buddy</h4></div>
+
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <div class="card-panel" >
+      <h5 class="center-align"><span class="blue-text text-darken-2">Existing User!! Go ahead and Login</span></h5>
+    </div>
+    <!-- <h5 class="center-align"><span class="#76ff03 light-green accent-3">Existing User!! Go ahead and Login</h5></span> -->
+
+    <form action="/login" method="post">
+      {%csrf_token%}
+      <div class="row">
+        <div class="input-field col s3">
+      <p class= "center-align">User Name:<input type="text" name="u_name" required class="center-align"></p></div></div>
+      <div class="row">
+      <div class="input-field col s3">
+      <p class= "center-align">Password:<input type="text" name="password" required></p></div></div>
+      <div class="row">
+      <div class="input-field col s6">
+      <button class="waves-effect waves-light btn-large" type="submit" name="action">Log in
+      <i class="material-icons right"></i>
+    </button>
+    </form>
+  </div>
+</div>
+
+
+  <h5 class="center-align"><span class="yellow">Not a registered user!! no problem, Get registered Below</span></h5>
+
+    {%for error in errors%}
+    <p>{{error}}</p>
+    {%endfor%}
+
+    {% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+        <li{% if message.tags %} class="{{ ERRORS }}"{% endif %}>{{ message }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+    <form action="/process" method="post">
+      {%csrf_token%}
+      <div class="row">
+      <div class="input-field col s3">
+      <p class= "center-align" >Name: <input type="text" name="name"></p></div></div>
+      <div class="row">
+      <div class="input-field col s3">
+      <p class= "center-align" >User Name:<input type="text" name="u_name" required></p></div></div>
+      <div class="row">
+      <div class="input-field col s3">
+      <p class= "center-align" >Password:<input type="text" name="password" required></p></div></div>
+      <p>*Password should be atleast 8 characters</p>
+      <div class="row">
+      <div class="input-field col s3">
+      <p class= "center-align" >Confirm Password:<input type="text" name="confpassword" required></p></div></div>
+      <div class="row">
+      <div class="input-field col s3">
+        <button class="waves-effect waves-light btn-large" type="submit" name="action">get me into the system!!
+        <i class="material-icons right"></i>
+      </button>
+      </div></div>
+    </form>
+
+
+
+  </body>
+</html>

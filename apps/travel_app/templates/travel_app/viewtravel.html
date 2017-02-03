@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.min.css">
+
+  </head>
+  <body>
+    <div class="card-panel">
+      <span class="green-text text-darken-2" ><p class="center-align"><a href="/success">Home</a> <br>
+      <a href="/logout">Logout</a></p></span>
+    </div>
+
+    <div class="card-panel">
+      <span class="green-text text-darken-2" >
+    <p class="left-align">Destination: {{views1.destination}}</p>
+    <p class="left-align">Planned by:  {{views1.owner.name}}</p>
+    <p class="left-align">Description:  {{views1.description}}</p>
+    <p class="left-align">Travel date from: {{views1.datefrom}}</p>
+    <p class="left-align">Travel date to: {{views1.dateto}}</p>
+
+  </div>
+  <span class="orange-text text-darken-2 " ><h5 class="center-align"> Other users joining the trip  </h5></span>
+
+    {%for view in views%}
+    {%if view.user.id != views1.owner_id %}
+
+ <span class="purple-text text-darken-2 " > <p class="center-align">{{view.user.name}}</p>
+    {%endif%}
+    {%endfor%}
+  </body>
+</html>
